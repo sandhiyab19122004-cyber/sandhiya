@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoDrive Insights</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+            </div>
+            <h1>EcoDrive Insights</h1>
+            <p class="tagline">
+                Transform your vehicle specifications into actionable environmental insights.
+                <br>
+                Discover your carbon footprint and get personalized strategies to drive greener.
+            </p>
+            
+            <!-- Feature Highlights -->
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Real-time Analysis</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Personalized Recommendations</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-globe-americas"></i>
+                    <span>Environmental Impact</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab-button active" data-tab="analyzer">
+                <i class="fas fa-clipboard-list"></i> Vehicle Analyzer
+            </button>
+            <button class="tab-button" data-tab="results">
+                <i class="fas fa-chart-bar"></i> Analysis Results
+            </button>
+            <button class="tab-button" data-tab="dashboard">
+                <i class="fas fa-globe"></i> Global Dashboard
+            </button>
+        </div>
+        
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Vehicle Analyzer Tab -->
+            <div class="tab-pane active" id="analyzer">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-car"></i>
+                        <h2>Vehicle Information</h2>
+                    </div>
+                    
+                    <div class="card-content">
+                        <form id="vehicle-form">
+                            <h3>Basic Vehicle Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="make">Vehicle Make</label>
+                                <select id="make" required>
+                                    <option value="" disabled selected>Select make</option>
+                                    <option value="toyota">Toyota</option>
+                                    <option value="honda">Honda</option>
+                                    <option value="ford">Ford</option>
+                                    <option value="chevrolet">Chevrolet</option>
+                                    <option value="tesla">Tesla</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="model">Vehicle Model</label>
+                                <select id="model" disabled required>
+                                    <option value="" disabled selected>Select model</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="year">Year</label>
+                                <input type="number" id="year" min="1990" max="2025" value="2025" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="engine_size">Engine Size (L)</label>
+                                <input type="number" id="engine_size" min="0.1" max="10" step="0.1" value="2" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="fuel_type">Fuel Type</label>
+                                <select id="fuel_type" required>
+                                    <option value="gasoline">Gasoline</option>
+                                    <option value="diesel">Diesel</option>
+                                    <option value="electric">Electric</option>
+                                    <option value="hybrid">Hybrid</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="transmission">Transmission</label>
+                                <select id="transmission" required>
+                                    <option value="automatic">Automatic</option>
+                                    <option value="manual">Manual</option>
+                                    <option value="cvt">CVT</option>
+                                </select>
+                            </div>
+                            
+                            <h3>Driving & Usage Analysis</h3>
+                            
+                            <div class="form-group">
+                                <label for="condition">Vehicle Condition</label>
+                                <select id="condition" required>
+                                    <option value="excellent">Excellent</option>
+                                    <option value="good" selected>Good</option>
+                                    <option value="fair">Fair</option>
+                                    <option value="poor">Poor</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="maintenance">Maintenance Frequency</label>
+                                <select id="maintenance" required>
+                                    <option value="regular" selected>Regular (As recommended)</option>
+                                    <option value="occasional">Occasional</option>
+                                    <option value="minimal">Minimal</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="usage">Primary Usage</label>
+                                <select id="usage" required>
+                                    <option value="commuting" selected>Daily Commuting</option>
+                                    <option value="occasional">Occasional Trips</option>
+                                    <option value="long_distance">Long Distance Travel</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="climate">Climate Zone</label>
+                                <select id="climate" required>
+                                    <option value="moderate" selected>Moderate (4 seasons)</option>
+                                    <option value="hot">Hot (Tropical/Desert)</option>
+                                    <option value="cold">Cold (Arctic/Subarctic)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group slider-group">
+                                <label>Driving Pattern: <span id="city-driving-value">50</span>% City / <span id="highway-driving-value">50</span>% Highway</label>
+                                <div class="slider-labels">
+                                    <span>100% Highway</span>
+                                    <span>Mixed</span>
+                                    <span>100% City</span>
+                                </div>
+                                <input type="range" id="city_driving_percent" min="0" max="100" value="50">
+                            </div>
+                            
+                            <div class="form-group slider-group">
+                                <label>Annual Mileage: <span id="annual-mileage-value">12,000</span> miles</label>
+                                <div class="slider-labels">
+                                    <span>1,000 miles</span>
+                                    <span></span>
+                                    <span>50,000 miles</span>
+                                </div>
+                                <input type="range" id="annual_miles" min="1000" max="50000" value="12000">
+                            </div>
+                            
+                            <button type="submit" class="btn-primary">Analyze My Vehicle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Analysis Results Tab -->
+            <div class="tab-pane" id="results">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar"></i>
+                        <h2>Analysis Results</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="placeholder-content">
+                            <p>Complete the vehicle analysis to see your results here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Global Dashboard Tab -->
+            <div class="tab-pane" id="dashboard">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-globe"></i>
+                        <h2>Global Dashboard</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="placeholder-content">
+                            <p>Global environmental impact data will be displayed here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <a href="https://app.emergent.sh/?utm_source=emergent-badge" id="emergent-badge" target="_blank">
+            Made with Emergent
+        </a>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
